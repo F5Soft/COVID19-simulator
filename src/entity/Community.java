@@ -7,6 +7,8 @@ public class Community {
     private final List<People> residents;
     private final List<People> visitors;
     private double flowRate;
+    private boolean travelRestriction;
+    private boolean quarantine;
 
     public Community() {
         residents = new ArrayList<>();
@@ -53,5 +55,21 @@ public class Community {
 
     public void setFlowRate(double flowRate) {
         this.flowRate = flowRate;
+    }
+
+    public boolean isTravelRestriction() {
+        return travelRestriction;
+    }
+
+    public void setTravelRestriction(boolean travelRestriction) {
+        this.travelRestriction = travelRestriction;
+    }
+
+    public boolean isQuarantine() {
+        return quarantine;
+    }
+
+    public void setQuarantine(boolean quarantine) {
+        this.quarantine = quarantine;
     }
 }

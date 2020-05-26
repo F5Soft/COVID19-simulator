@@ -15,25 +15,24 @@ public class People {
      * </p>
      */
     public final Community community;
+    private Community position;
     private int status;
     private boolean wearMask;
     private double reproduction;
     private double immunity;
 
-    public People() {
-        community = null;
-        setStatus(0);
-    }
-
-    public People(int status) {
-        community = null;
-        setStatus(status);
-    }
-
     public People(Community community) {
         this.community = community;
         this.community.residentCome(this);
+        this.position = community;
         setStatus(0);
+    }
+
+    public People(int status, Community position) {
+        community = null;
+        this.position = position;
+        this.position.visitorCome(this);
+        setStatus(status);
     }
 
     public void humanToHumanTransmission(List<People> receivers) {
@@ -47,6 +46,14 @@ public class People {
                 receiver.setStatus(1);
             }
         }
+    }
+
+    public void setPosition(Community position) {
+        this.position = position;
+    }
+
+    public Community getPosition() {
+        return position;
     }
 
     public int getStatus() {
