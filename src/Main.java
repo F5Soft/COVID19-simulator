@@ -1,14 +1,12 @@
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import view.CommunityView;
-import view.PeopleView;
+import view.City;
+import view.Community;
+import view.People;
 
 public class Main extends Application {
 
@@ -16,15 +14,16 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
 
-        FlowPane cityView = (FlowPane) root.getChildrenUnmodifiable().get(0);
-        for (int i = 0; i < 15; i++) {
-            CommunityView communityView = new CommunityView();
-
-            for (int j = 0; j < 30; j++) {
-                PeopleView peopleView = new PeopleView(i * 30 + j);
-                communityView.addPeopleView(peopleView);
+        City city = (City) root.getChildrenUnmodifiable().get(0);
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 5; j++) {
+                Community community = new Community(110 * j + 10, 110 * i + 10);
+                for (int k = 0; k < 30; k++) {
+                    People people = new People();
+                    community.addPeople(people);
+                }
+                city.addCommunity(community);
             }
-            cityView.getChildren().add(communityView);
         }
 
         primaryStage.setTitle("COVID-19 Simulator");
