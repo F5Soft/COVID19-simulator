@@ -7,6 +7,7 @@ public class Parameter {
      */
     private static final double[] basicReproduction = {0, 0.28, 2.79, 0};
     private static final double[] basicImmunity = {0, 1, 1, 0.8};
+    private static final String[] statusColor = {"#4ec9b0", "#dcdcaa", "#ce9178", "#4ec9b0"};
     /**
      * The scale of infections reduced by
      */
@@ -26,6 +27,10 @@ public class Parameter {
 
     public static void setBasicImmunity(int status, double immunity){
         basicImmunity[status] = immunity;
+    }
+
+    public static String getStatusColor(int status) {
+        return  statusColor[status];
     }
 
     public static double getMaskEffect() {

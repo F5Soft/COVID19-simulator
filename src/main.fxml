@@ -1,19 +1,18 @@
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Label?>
 
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Line?>
-<GridPane fx:controller="view.Controller" xmlns:fx="http://javafx.com/fxml" alignment="CENTER" hgap="30"
-          style="-fx-background-color: #333333">
-    <FlowPane fx:id="cityView" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.rowSpan="2" alignment="CENTER"
-              minWidth="550" maxWidth="550" minHeight="340" maxHeight="340" hgap="10" vgap="10">
+<?import view.CityView?>
 
-    </FlowPane>
+<GridPane fx:controller="Controller" xmlns:fx="http://javafx.com/fxml" alignment="CENTER" hgap="30"
+          style="-fx-background-color: #333333">
+    <CityView fx:id="cityView" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.rowSpan="2" alignment="CENTER"
+              minWidth="550" maxWidth="550" minHeight="340" maxHeight="340" hgap="10" vgap="10">
+    </CityView>
     <HBox GridPane.rowIndex="0" GridPane.columnIndex="1" alignment="CENTER_LEFT"
           minWidth="230" maxWidth="230" minHeight="180" maxHeight="180">
         <Pane minWidth="215" maxWidth="215" minHeight="160" maxHeight="160" style="-fx-background-color: #3c3c3c">
@@ -22,19 +21,19 @@
         </Pane>
     </HBox>
     <GridPane GridPane.rowIndex="1" GridPane.columnIndex="1" hgap="10" vgap="15" alignment="CENTER_LEFT">
-        <Label GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-text-fill: #e7e7e7">Reproduction: </Label>
+        <Label GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-text-fill: #e7e7e7">Reproduction:</Label>
         <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" maxWidth="120"
                    style="-fx-text-fill: #e7e7e7; -fx-background-color: #3c3c3c">2.78
         </TextField>
-        <Label GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-text-fill: #e7e7e7">Immunity: </Label>
+        <Label GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-text-fill: #e7e7e7">Immunity:</Label>
         <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" maxWidth="120"
                    style="-fx-text-fill: #e7e7e7; -fx-background-color: #3c3c3c">2.78
         </TextField>
-        <Label GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-text-fill: #e7e7e7">Mask Effect: </Label>
+        <Label GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-text-fill: #e7e7e7">Mask Effect:</Label>
         <TextField GridPane.rowIndex="2" GridPane.columnIndex="1" maxWidth="120"
                    style="-fx-text-fill: #e7e7e7; -fx-background-color: #3c3c3c">2.78
         </TextField>
-        <Button GridPane.rowIndex="3" GridPane.columnIndex="0" minWidth="80"
+        <Button GridPane.rowIndex="3" GridPane.columnIndex="0" minWidth="80" onAction="#startSimulate"
                 style="-fx-text-fill: #e7e7e7; -fx-background-color: #569cd6">Start
         </Button>
         <Button GridPane.rowIndex="3" GridPane.columnIndex="1" minWidth="80"

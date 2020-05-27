@@ -1,9 +1,17 @@
 package view;
 
+import javafx.animation.PathTransition;
+import javafx.scene.Node;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Line;
+import javafx.util.Duration;
+
+import java.util.ArrayList;
 
 
 public class CommunityView extends Pane {
+
+
     public CommunityView() {
         setPrefWidth(100);
         setPrefHeight(100);
@@ -14,5 +22,19 @@ public class CommunityView extends Pane {
         peopleView.setLayoutX(Math.random() * 92 + 4);
         peopleView.setLayoutY(Math.random() * 92 + 4);
         getChildren().add(peopleView);
+    }
+
+    public ArrayList<PeopleView> getPeopleViews() {
+        ArrayList<PeopleView> peopleViews = new ArrayList<>();
+        for (Node node : getChildren()) {
+            peopleViews.add((PeopleView) node);
+        }
+        return peopleViews;
+    }
+
+    public void peopleCluster() {
+        for (PeopleView peopleView : getPeopleViews()) {
+            peopleView.cluster();
+        }
     }
 }
