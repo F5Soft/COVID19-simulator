@@ -1,13 +1,11 @@
-package view;
+package entity;
 
-import com.sun.scenario.effect.impl.prism.ps.PPSBlend_ADDPeer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
-import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 
 

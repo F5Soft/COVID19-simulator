@@ -1,6 +1,6 @@
-package view;
+package entity;
 
-import Common.Parameter;
+import common.Parameter;
 import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
 import javafx.animation.Timeline;
@@ -8,8 +8,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
-
-import java.util.Random;
 
 
 public class People extends Circle {
@@ -78,6 +76,10 @@ public class People extends Circle {
         symptomPeriod.setCycleCount(1);
 
         setStatus(0);
+    }
+
+    public int getStatus() {
+        return status;
     }
 
     public void setStatus(int status) {

@@ -1,10 +1,9 @@
-package view;
+package entity;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
 import javafx.animation.Timeline;
 import javafx.scene.Node;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
@@ -14,6 +13,7 @@ import java.util.ArrayList;
 public class City extends Pane {
 
     private final Timeline peopleTravel;
+    private boolean travelRestriction;
 
     public City() {
         peopleTravel = new Timeline(new KeyFrame(Duration.millis(100), e -> {
@@ -75,5 +75,13 @@ public class City extends Pane {
             people.addAll(community.getPeople());
         }
         return people;
+    }
+
+    public boolean isTravelRestriction() {
+        return travelRestriction;
+    }
+
+    public void setTravelRestriction(boolean travelRestriction) {
+        this.travelRestriction = travelRestriction;
     }
 }

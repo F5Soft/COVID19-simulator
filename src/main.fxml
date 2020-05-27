@@ -6,7 +6,7 @@
 
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Line?>
-<?import view.City?>
+<?import entity.City?>
 
 <GridPane fx:controller="Controller" xmlns:fx="http://javafx.com/fxml" alignment="CENTER" hgap="30"
           style="-fx-background-color: #333333">
@@ -15,7 +15,7 @@
     </City>
     <HBox GridPane.rowIndex="0" GridPane.columnIndex="1" alignment="CENTER_LEFT"
           minWidth="230" maxWidth="230" minHeight="180" maxHeight="180">
-        <Pane minWidth="215" maxWidth="215" minHeight="160" maxHeight="160" style="-fx-background-color: #3c3c3c">
+        <Pane fx:id="statisticsPane" minWidth="215" maxWidth="215" minHeight="160" maxHeight="160" style="-fx-background-color: #3c3c3c">
             <Line endX="215" startY="140" endY="140" stroke="#e7e7e7"/>
             <Line startX="20" endX="20" endY="160" stroke="#e7e7e7"/>
         </Pane>
