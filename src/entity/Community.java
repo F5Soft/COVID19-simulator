@@ -1,43 +1,22 @@
 package entity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Community {
-    private final List<People> residents;
-    private final List<People> visitors;
-    private double flowRate;
-    private boolean travelRestriction;
-    private boolean quarantine;
+    private final ArrayList<People> residents;
+    private final ArrayList<People> visitors;
+    private boolean socialDistancing;
 
     public Community() {
         residents = new ArrayList<>();
         visitors = new ArrayList<>();
-        flowRate = 0.5;
-    }
-
-    public void communityTransmission() {
-        List<People> cluster = new ArrayList<>();
-        for (People people : residents) {
-            if (Math.random() < flowRate) {
-                cluster.add(people);
-            }
-        }
-        for (People people : visitors) {
-            if (Math.random() < flowRate) {
-                cluster.add(people);
-            }
-        }
-        for (People people : cluster) {
-            people.humanToHumanTransmission(cluster);
-        }
     }
 
     public void residentCome(People resident) {
         residents.add(resident);
     }
 
-    public void residentLeave(People resident){
+    public void residentLeave(People resident) {
         residents.remove(resident);
     }
 
@@ -49,27 +28,17 @@ public class Community {
         visitors.remove(visitor);
     }
 
-    public double getFlowRate() {
-        return flowRate;
+    public ArrayList<People> getPeople() {
+        ArrayList<People> people = new ArrayList<>();
+        people.addAll(residents);
+        people.addAll(visitors);
+        return people;
     }
 
-    public void setFlowRate(double flowRate) {
-        this.flowRate = flowRate;
+    public boolean isSocialDistancing() {
+        return socialDistancing;
     }
 
-    public boolean isTravelRestriction() {
-        return travelRestriction;
-    }
-
-    public void setTravelRestriction(boolean travelRestriction) {
-        this.travelRestriction = travelRestriction;
-    }
-
-    public boolean isQuarantine() {
-        return quarantine;
-    }
-
-    public void setQuarantine(boolean quarantine) {
-        this.quarantine = quarantine;
+    public void setSocialDistancing(boolean socialDistancing) {
     }
 }

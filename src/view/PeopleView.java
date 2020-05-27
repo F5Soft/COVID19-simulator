@@ -12,10 +12,13 @@ import javafx.util.Duration;
 
 public class PeopleView extends Circle {
 
+    public final int index;
+
     private final Timeline randomMovement;
     private double dTheta;
 
-    public PeopleView() {
+    public PeopleView(int index) {
+        this.index = index;
         setLayoutX(Math.random() * 92 + 4);
         setLayoutY(Math.random() * 92 + 4);
         setRadius(2);
@@ -63,5 +66,9 @@ public class PeopleView extends Circle {
         pathTransition.setPath(line);
         pathTransition.play();
         randomMovement.play();
+    }
+
+    public void die() {
+        randomMovement.stop();
     }
 }

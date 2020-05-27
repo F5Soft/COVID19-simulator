@@ -3,6 +3,8 @@ package entity;
 import Common.Parameter;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class People {
     /**
@@ -14,38 +16,20 @@ public class People {
      * 3: 治愈
      * </p>
      */
+    public final int index;
     public final Community community;
+
     private Community position;
     private int status;
-    private boolean wearMask;
-    private double reproduction;
+    private double transmissionProb;
     private double immunity;
 
-    public People(Community community) {
+    public People(int index, Community community) {
+        this.index = index;
         this.community = community;
         this.community.residentCome(this);
         this.position = community;
         setStatus(0);
-    }
-
-    public People(int status, Community position) {
-        community = null;
-        this.position = position;
-        this.position.visitorCome(this);
-        setStatus(status);
-    }
-
-    public void humanToHumanTransmission(List<People> receivers) {
-        double basicProbability = getReproduction() / receivers.size();
-        for (People receiver : receivers) {
-            double probability = basicProbability * (1 - receiver.getImmunity());
-            if (receiver.isWearMask()) {
-                probability *= 0.4;
-            }
-            if (Math.random() < probability) {
-                receiver.setStatus(1);
-            }
-        }
     }
 
     public void setPosition(Community position) {
@@ -62,26 +46,12 @@ public class People {
 
     public void setStatus(int status) {
         this.status = status;
-        reproduction = Parameter.getBasicReproduction(status);
+        transmissionProb = Parameter.getBasicTransmissionProb(status);
         immunity = Parameter.getBasicImmunity(status);
-        if (wearMask) {
-            reproduction *= Parameter.getChanceReduceWithMask();
-            immunity = 1 - (1 - immunity) * Parameter.getChanceReduceWithMask();
-        }
     }
 
-    public boolean isWearMask() {
-        return wearMask;
-    }
-
-    public void setWearMask(boolean wearMask) {
-        this.wearMask = wearMask;
-        reproduction *= Parameter.getChanceReduceWithMask();
-        immunity = 1 - (1 - immunity) * Parameter.getChanceReduceWithMask();
-    }
-
-    public double getReproduction() {
-        return reproduction;
+    public double getTransmissionProb() {
+        return transmissionProb;
     }
 
     public double getImmunity() {

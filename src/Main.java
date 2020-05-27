@@ -21,7 +21,7 @@ public class Main extends Application {
             CommunityView communityView = new CommunityView();
 
             for (int j = 0; j < 30; j++) {
-                PeopleView peopleView = new PeopleView();
+                PeopleView peopleView = new PeopleView(i * 30 + j);
                 communityView.addPeopleView(peopleView);
             }
             cityView.getChildren().add(communityView);
