@@ -19,8 +19,6 @@ public class CommunityView extends Pane {
     }
 
     public void addPeopleView(PeopleView peopleView) {
-        peopleView.setLayoutX(Math.random() * 92 + 4);
-        peopleView.setLayoutY(Math.random() * 92 + 4);
         getChildren().add(peopleView);
     }
 

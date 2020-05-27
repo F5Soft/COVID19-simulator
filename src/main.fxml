@@ -33,11 +33,11 @@
         <TextField GridPane.rowIndex="2" GridPane.columnIndex="1" maxWidth="120"
                    style="-fx-text-fill: #e7e7e7; -fx-background-color: #3c3c3c">2.78
         </TextField>
-        <Button GridPane.rowIndex="3" GridPane.columnIndex="0" minWidth="80" onAction="#startSimulate"
+        <Button fx:id="startButton" GridPane.rowIndex="3" GridPane.columnIndex="0" minWidth="80" onAction="#startSimulate"
                 style="-fx-text-fill: #e7e7e7; -fx-background-color: #569cd6">Start
         </Button>
-        <Button GridPane.rowIndex="3" GridPane.columnIndex="1" minWidth="80"
-                style="-fx-text-fill: #e7e7e7; -fx-background-color: #569cd6">Pause
+        <Button fx:id="stopButton" GridPane.rowIndex="3" GridPane.columnIndex="1" minWidth="80" onAction="#stopSimulate"
+                disable="true" style="-fx-text-fill: #e7e7e7; -fx-background-color: #569cd6">Stop
         </Button>
     </GridPane>
 </GridPane>
