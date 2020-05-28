@@ -8,9 +8,11 @@ import javafx.scene.control.Button;
 import entity.City;
 import entity.Community;
 import entity.People;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import java.lang.reflect.Array;
@@ -24,9 +26,10 @@ public class Controller {
     @FXML
     public Button optionButton;
     public Pane statisticsPane;
+    public Label daysLabel;
 
     private Timeline statisticsLive;
-    private static double statisticsX = 20;
+    private static int days = 0;
 
     public void startSimulate(ActionEvent actionEvent) {
         ArrayList<People> people = city.getAllPeople();
@@ -40,14 +43,21 @@ public class Controller {
             for (int i = 0; i < 5; i++) {
                 sum += statistics[i];
             }
-            double height = 0;
-            for (int i: new int[] {3, 0, 2, 1, 4}) {
-                Line line = new Line(statisticsX, height, statisticsX, height + statistics[i] / sum * 140);
+            double statisticsY = 0;
+            double statisticsX = days / 2.0 + 20;
+            for (int i : new int[]{3, 0, 2, 1, 4}) {
+                Line line = new Line(statisticsX, statisticsY, statisticsX, statisticsY + statistics[i] / sum * 140);
                 line.setStroke(Color.web(Parameter.getStatusColor(i)));
-                height += statistics[i] / sum * 140;
+                statisticsY += statistics[i] / sum * 140;
                 statisticsPane.getChildren().add(line);
             }
-            statisticsX += 0.5;
+            System.out.println(sum);
+            days++;
+            if (days == 390) {
+                days = 0;
+                statisticsPane.getChildren().clear();
+            }
+            daysLabel.setText(days + " Days");
         }));
         statisticsLive.setCycleCount(-1);
         statisticsLive.play();

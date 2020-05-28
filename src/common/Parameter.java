@@ -6,14 +6,11 @@ public class Parameter {
      * <p>number source: wikipedia</p>
      */
     private static final double[] basicTransmissionProb = {0, 0.05, 0.2, 0, 0};
-    private static final double[] basicImmunity = {0, 1, 1, 0.8, 1};
+    private static final double[] basicImmunity = {0, 1, 1, 0.96, 1};
     private static final String[] statusColor = {"#4ec9b0", "#dcdcaa", "#ce9178", "#e7e7e7", "#3c3c3c"};
 
     private static double deathRate = 0.03;
-    /**
-     * The scale of infections reduced by
-     */
-    private static double maskEffect = 0.75;
+    private static double clusterRate = 0.6;
 
     public static double getBasicTransmissionProb(int status) {
         return basicTransmissionProb[status];
@@ -39,15 +36,15 @@ public class Parameter {
         return deathRate;
     }
 
-    public static double getMaskEffect() {
-        return maskEffect;
+    public static double getClusterRate() {
+        return clusterRate;
     }
 
-    public static void setMaskEffect(double maskEffect) {
-        Parameter.maskEffect = maskEffect;
+    public static void setClusterRate(double clusterRate) {
+        Parameter.clusterRate = clusterRate;
     }
 
     public static double getChanceReduceWithMask() {
-        return Math.sqrt(1 - maskEffect);
+        return Math.sqrt(1 - clusterRate);
     }
 }

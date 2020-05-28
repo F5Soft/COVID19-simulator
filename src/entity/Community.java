@@ -1,5 +1,6 @@
 package entity;
 
+import common.Parameter;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Node;
@@ -11,8 +12,7 @@ import java.util.ArrayList;
 
 public class Community extends Pane {
 
-    private final Timeline peopleCluster;
-    private double flowRate;
+    private boolean lockDown;
 
     public Community(double x, double y) {
         setLayoutX(x);
@@ -20,15 +20,6 @@ public class Community extends Pane {
         setPrefWidth(100);
         setPrefHeight(100);
         setStyle("-fx-border-width: 1; -fx-border-radius: 5; -fx-border-color: #d4d4d4");
-        flowRate = 0.6;
-
-        peopleCluster = new Timeline(new KeyFrame(Duration.millis(4000), e -> {
-            if (Math.random() < flowRate)
-                for (People people : getPeople()) {
-                    people.cluster();
-                }
-        }));
-        peopleCluster.setCycleCount(-1);
     }
 
     public void addPeople(People people) {
@@ -40,16 +31,31 @@ public class Community extends Pane {
     }
 
     public void play() {
-        peopleCluster.play();
         for (People people : getPeople()) {
             people.play();
         }
     }
 
     public void stop() {
-        peopleCluster.stop();
         for (People people : getPeople()) {
             people.stop();
+        }
+    }
+
+    public void peopleCluster() {
+        if (Math.random() < Parameter.getClusterRate()) {
+            for (People people : getPeople()) {
+                people.cluster();
+            }
+        }
+    }
+
+    public void toggleLockDown() {
+        lockDown = !lockDown;
+        if (lockDown) {
+            setStyle("-fx-border-width: 2; -fx-border-radius: 5; -fx-border-color: #ce9178");
+        } else {
+            setStyle("-fx-border-width: 1; -fx-border-radius: 5; -fx-border-color: #d4d4d4");
         }
     }
 
@@ -67,5 +73,9 @@ public class Community extends Pane {
 
     public double getDistanceY(Community community) {
         return community.getLayoutY() - getLayoutY();
+    }
+
+    public boolean isLockDown() {
+        return lockDown;
     }
 }

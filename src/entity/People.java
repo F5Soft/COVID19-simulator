@@ -15,7 +15,7 @@ public class People extends Circle {
     private int status;
     private double transmissionProb;
     private double immunity;
-    private boolean died;
+    private boolean dead;
 
     private final Timeline randomMovement;
     private final Timeline transmission;
@@ -97,7 +97,7 @@ public class People extends Circle {
                 symptomPeriod.play();
                 break;
             case 4:
-                died = true;
+                dead = true;
                 stop();
                 break;
             default:
@@ -144,5 +144,9 @@ public class People extends Circle {
 
     public Community getCommunity() {
         return (Community) getParent();
+    }
+
+    public boolean isDead() {
+        return dead;
     }
 }

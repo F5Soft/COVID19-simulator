@@ -22,9 +22,14 @@ public class City extends Pane {
             int rand2 = (int) (Math.random() * communities.size());
             Community community1 = communities.get(rand1);
             Community community2 = communities.get(rand2);
-            People people = community1.getPeople().get(0);
-
-            if (people != null) {
+            if (community1.isLockDown() || community2.isLockDown()) {
+                return;
+            }
+            try {
+                People people = community1.getPeople().get(0);
+                if (people.isDead()) {
+                    return;
+                }
                 people.stop();
                 people.setVisible(false);
                 community1.removePeople(people);
@@ -38,6 +43,7 @@ public class City extends Pane {
                 people.setVisible(true);
                 pathTransition.play();
                 pathTransition.setOnFinished(ee -> people.play());
+            } catch (IndexOutOfBoundsException ignored) {
             }
         }));
         peopleTravel.setCycleCount(-1);

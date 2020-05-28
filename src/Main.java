@@ -2,6 +2,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import entity.City;
 import entity.Community;
@@ -21,6 +22,13 @@ public class Main extends Application {
                     People people = new People();
                     community.addPeople(people);
                 }
+                community.setOnMouseClicked(e -> {
+                    if (e.getButton() == MouseButton.PRIMARY) {
+                        community.peopleCluster();
+                    } else if (e.getButton() == MouseButton.SECONDARY) {
+                        community.toggleLockDown();
+                    }
+                });
                 city.addCommunity(community);
             }
         }
