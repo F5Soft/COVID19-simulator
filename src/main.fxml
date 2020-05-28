@@ -8,7 +8,6 @@
 <?import javafx.scene.shape.Line?>
 <?import entity.City?>
 
-<?import javafx.scene.text.Text?>
 <GridPane fx:controller="Controller" xmlns:fx="http://javafx.com/fxml" alignment="CENTER" hgap="30"
           style="-fx-background-color: #333333">
     <City fx:id="city" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.rowSpan="2"
@@ -20,26 +19,26 @@
               style="-fx-background-color: #3c3c3c">
             <Line endX="215" startY="140" endY="140" stroke="#e7e7e7"/>
             <Line startX="20" endX="20" endY="160" stroke="#e7e7e7"/>
-            <Pane  fx:id="statisticsPane" minWidth="215" maxWidth="215" minHeight="160" maxHeight="160"/>
+            <Pane fx:id="statisticsPane" minWidth="215" maxWidth="215" minHeight="160" maxHeight="160"/>
             <HBox layoutX="20" layoutY="143" minWidth="185" alignment="CENTER_RIGHT">
-            <Label fx:id="daysLabel" layoutX="180" layoutY="143" style="-fx-text-fill: #e7e7e7; -fx-font-size: 9">0
-                Days
-            </Label>
+                <Label fx:id="daysLabel" layoutX="180" layoutY="143" style="-fx-text-fill: #e7e7e7; -fx-font-size: 9">0
+                    Days
+                </Label>
             </HBox>
         </Pane>
     </HBox>
     <GridPane GridPane.rowIndex="1" GridPane.columnIndex="1" hgap="10" vgap="15" alignment="CENTER_LEFT">
-        <Label GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-text-fill: #e7e7e7">Reproduction:</Label>
-        <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" maxWidth="120"
-                   style="-fx-text-fill: #e7e7e7; -fx-background-color: #3c3c3c; -fx-text-alignment: right">2.78
+        <Label GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-text-fill: #e7e7e7">Trans. prob. :</Label>
+        <TextField fx:id="param1" GridPane.rowIndex="0" GridPane.columnIndex="1" maxWidth="120"
+                   style="-fx-text-fill: #e7e7e7; -fx-background-color: #3c3c3c; -fx-text-alignment: right">0.2
         </TextField>
-        <Label GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-text-fill: #e7e7e7">Immunity:</Label>
-        <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" maxWidth="120"
-                   style="-fx-text-fill: #e7e7e7; -fx-background-color: #3c3c3c">2.78
+        <Label GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-text-fill: #e7e7e7">Trans. radius:</Label>
+        <TextField fx:id="param2" GridPane.rowIndex="1" GridPane.columnIndex="1" maxWidth="120"
+                   style="-fx-text-fill: #e7e7e7; -fx-background-color: #3c3c3c">8
         </TextField>
-        <Label GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-text-fill: #e7e7e7">Mask Effect:</Label>
-        <TextField GridPane.rowIndex="2" GridPane.columnIndex="1" maxWidth="120"
-                   style="-fx-text-fill: #e7e7e7; -fx-background-color: #3c3c3c">2.78
+        <Label GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-text-fill: #e7e7e7">Death prob.</Label>
+        <TextField fx:id="param3" GridPane.rowIndex="2" GridPane.columnIndex="1" maxWidth="120"
+                   style="-fx-text-fill: #e7e7e7; -fx-background-color: #3c3c3c">0.03
         </TextField>
         <Button fx:id="startButton" GridPane.rowIndex="3" GridPane.columnIndex="0" minWidth="80"
                 onAction="#startSimulate"

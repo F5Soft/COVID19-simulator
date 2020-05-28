@@ -54,20 +54,18 @@ public class People extends Circle {
         transmission = new Timeline(new KeyFrame(Duration.millis(500), e -> {
             Community community = getCommunity();
             for (People people : community.getPeople()) {
-                if (getSocialDistance(people) < 8) {
+                if (getSocialDistance(people) < Parameter.getTransmissionRadius()) {
                     humanToHumanTransmission(people);
                 }
             }
         }));
         transmission.setCycleCount(-1);
 
-        incubationPeriod = new Timeline(new KeyFrame(Duration.millis(3500 + Math.random() * 3500), e -> {
-            setStatus(2);
-        }));
+        incubationPeriod = new Timeline(new KeyFrame(Duration.millis(3500 + Math.random() * 3500), e -> setStatus(2)));
         incubationPeriod.setCycleCount(1);
 
         symptomPeriod = new Timeline(new KeyFrame(Duration.millis(14000 + Math.random() * 14000), e -> {
-            if (Math.random() < Parameter.getDeathRate()) {
+            if (Math.random() < Parameter.getDeathProb()) {
                 setStatus(4);
             } else {
                 setStatus(3);
