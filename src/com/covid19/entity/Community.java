@@ -1,4 +1,4 @@
-package entity;
+package com.covid19.entity;
 
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;

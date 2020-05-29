@@ -1,6 +1,5 @@
-import entity.City;
-import entity.Community;
-import entity.People;
+package com.covid19.ui;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

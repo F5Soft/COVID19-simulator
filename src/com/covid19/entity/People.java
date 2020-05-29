@@ -1,6 +1,6 @@
-package entity;
+package com.covid19.entity;
 
-import common.Parameter;
+import com.covid19.common.Parameter;
 import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
 import javafx.animation.Timeline;
@@ -92,8 +92,7 @@ public class People extends Circle {
         randomMovement.setCycleCount(-1);
         // 设置传播的时间戳，每0.5秒（1天）进行一次传播
         transmission = new Timeline(new KeyFrame(Duration.millis(500), e -> {
-            Community community = getCommunity();
-            for (People people : community.getPeople()) {
+            for (People people : getCommunity().getPeople()) {
                 if (getSocialDistance(people) < Parameter.getTransmissionRadius()) {
                     humanToHumanTransmission(people);
                 }
@@ -170,7 +169,7 @@ public class People extends Circle {
     }
 
     /**
-     * ，模拟该人跑去和别人群聚的动画
+     * 模拟该人跑去和别人群聚的动画
      */
     public void cluster() {
         PathTransition pathTransition = new PathTransition();
@@ -181,6 +180,11 @@ public class People extends Circle {
         Line line = new Line(0, 0, 50 - getLayoutX(), 50 - getLayoutY());
         pathTransition.setPath(line);
         pathTransition.play();
+        pathTransition.setOnFinished(e -> {
+            for (People people : getCommunity().getPeople()) {
+                humanToHumanTransmission(people);
+            }
+        });
     }
 
     /**

@@ -1,4 +1,4 @@
-package common;
+package com.covid19.common;
 
 /**
  * 模型参数静态类

@@ -1,6 +1,6 @@
-package entity;
+package com.covid19.entity;
 
-import common.Parameter;
+import com.covid19.common.Parameter;
 import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
 import javafx.animation.Timeline;

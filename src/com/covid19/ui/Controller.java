@@ -1,7 +1,9 @@
-import common.Parameter;
-import common.Statistics;
-import entity.City;
-import entity.People;
+package com.covid19.ui;
+
+import com.covid19.common.Parameter;
+import com.covid19.common.Statistics;
+import com.covid19.entity.City;
+import com.covid19.entity.People;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;

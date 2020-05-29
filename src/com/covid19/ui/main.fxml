@@ -1,8 +1,8 @@
-<?import entity.City?>
+<?import com.covid19.entity.City?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Line?>
-<GridPane fx:controller="Controller" xmlns:fx="http://javafx.com/fxml" alignment="CENTER" hgap="30"
+<GridPane fx:controller="com.covid19.ui.Controller" xmlns:fx="http://javafx.com/fxml" alignment="CENTER" hgap="30"
           style="-fx-background-color: #333333">
     <City fx:id="city" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.rowSpan="2"
           prefWidth="550" prefHeight="340">
