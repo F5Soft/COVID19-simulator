@@ -1,17 +1,11 @@
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.Label?>
-
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.shape.Line?>
 <?import entity.City?>
-
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Line?>
 <GridPane fx:controller="Controller" xmlns:fx="http://javafx.com/fxml" alignment="CENTER" hgap="30"
           style="-fx-background-color: #333333">
     <City fx:id="city" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.rowSpan="2"
-          minWidth="550" maxWidth="550" minHeight="340" maxHeight="340">
+          prefWidth="550" prefHeight="340">
     </City>
     <HBox GridPane.rowIndex="0" GridPane.columnIndex="1" alignment="CENTER_LEFT"
           minWidth="230" maxWidth="230" minHeight="180" maxHeight="180">
@@ -29,24 +23,23 @@
     </HBox>
     <GridPane GridPane.rowIndex="1" GridPane.columnIndex="1" hgap="10" vgap="15" alignment="CENTER_LEFT">
         <Label GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-text-fill: #e7e7e7">Trans. prob. :</Label>
-        <TextField fx:id="param1" GridPane.rowIndex="0" GridPane.columnIndex="1" maxWidth="120"
+        <TextField fx:id="transProbTextField" GridPane.rowIndex="0" GridPane.columnIndex="1" maxWidth="120"
                    style="-fx-text-fill: #e7e7e7; -fx-background-color: #3c3c3c; -fx-text-alignment: right">0.2
         </TextField>
         <Label GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-text-fill: #e7e7e7">Trans. radius:</Label>
-        <TextField fx:id="param2" GridPane.rowIndex="1" GridPane.columnIndex="1" maxWidth="120"
+        <TextField fx:id="transRadiusTextField" GridPane.rowIndex="1" GridPane.columnIndex="1" maxWidth="120"
                    style="-fx-text-fill: #e7e7e7; -fx-background-color: #3c3c3c">8
         </TextField>
         <Label GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-text-fill: #e7e7e7">Death prob.</Label>
-        <TextField fx:id="param3" GridPane.rowIndex="2" GridPane.columnIndex="1" maxWidth="120"
+        <TextField fx:id="deathProbTextField" GridPane.rowIndex="2" GridPane.columnIndex="1" maxWidth="120"
                    style="-fx-text-fill: #e7e7e7; -fx-background-color: #3c3c3c">0.03
         </TextField>
         <Button fx:id="startButton" GridPane.rowIndex="3" GridPane.columnIndex="0" minWidth="80"
                 onAction="#startSimulate"
                 style="-fx-text-fill: #e7e7e7; -fx-background-color: #569cd6">Start
         </Button>
-        <Button fx:id="optionButton" GridPane.rowIndex="3" GridPane.columnIndex="1" minWidth="80"
-                onAction="#openOptionWindow"
-                style="-fx-text-fill: #e7e7e7; -fx-background-color: #569cd6">Stop
+        <Button fx:id="toggleButton" GridPane.rowIndex="3" GridPane.columnIndex="1" minWidth="80" onAction="#toggleSimulate"
+                disable="true" style="-fx-text-fill: #e7e7e7; -fx-background-color: #569cd6">Pause
         </Button>
     </GridPane>
 </GridPane>
