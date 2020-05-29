@@ -4,11 +4,13 @@ import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
 import javafx.animation.Timeline;
 import javafx.scene.Node;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class City extends Pane {
 
@@ -18,19 +20,18 @@ public class City extends Pane {
     public City() {
         peopleTravel = new Timeline(new KeyFrame(Duration.millis(100), e -> {
             ArrayList<Community> communities = getCommunities();
-            int rand1 = (int) (Math.random() * communities.size());
-            int rand2 = (int) (Math.random() * communities.size());
-            Community community1 = communities.get(rand1);
-            Community community2 = communities.get(rand2);
-            if (community1.isLockDown() || community2.isLockDown()) {
+            Community community1 = communities.get((int) (Math.random() * communities.size()));
+            Community community2 = communities.get((int) (Math.random() * communities.size()));
+            if (community1.isLockDown() || community2.isLockDown() || community1 == community2) {
                 return;
             }
             try {
-                People people = community1.getPeople().get(0);
-                if (people.isDead()) {
+                People people = community1.getPeople().get((int) (Math.random() * community1.getPeople().size()));
+                if (people.isDead() || people.isOnTravel()) {
                     return;
                 }
-                people.stop();
+                people.setOnTravel(true);
+                people.pause();
                 people.setVisible(false);
                 community1.removePeople(people);
                 community2.addPeople(people);
@@ -42,11 +43,26 @@ public class City extends Pane {
                 pathTransition.setPath(line);
                 people.setVisible(true);
                 pathTransition.play();
-                pathTransition.setOnFinished(ee -> people.play());
+                pathTransition.setOnFinished(ee -> {
+                    people.play();
+                    people.setOnTravel(false);
+                });
             } catch (IndexOutOfBoundsException ignored) {
             }
         }));
         peopleTravel.setCycleCount(-1);
+
+        setOnMouseClicked(e -> {
+            double x = e.getSceneX() - getLayoutX();
+            double y = e.getSceneY() - getLayoutY();
+            int col = (int) ((x - 10) / 110);
+            int row = (int) ((y - 10) / 110);
+            if (e.getButton() == MouseButton.PRIMARY) {
+                getCommunities().get(5 * row + col).peopleCluster();
+            } else if (e.getButton() == MouseButton.SECONDARY) {
+                getCommunities().get(5 * row + col).toggleLockDown();
+            }
+        });
     }
 
     public void play() {

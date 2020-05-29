@@ -57,6 +57,7 @@ public class Controller {
             if (deathProb < 0 || deathProb > 1) {
                 throw new Exception("Death probability should be 0 ~ 1!");
             }
+            Parameter.setBasicTransmissionProb(1, basicTransmissionProb * 0.1);
             Parameter.setBasicTransmissionProb(2, basicTransmissionProb);
             Parameter.setTransmissionRadius(transmissionRadius);
             Parameter.setDeathProb(deathProb);
@@ -88,7 +89,7 @@ public class Controller {
                 sum += statistics[i];
             }
             double statisticsY = 0;
-            double statisticsX = days / 2.0 + 20;
+            double statisticsX = (days % 365) / 2.0 + 20;
             for (int i : new int[]{3, 0, 2, 1, 4}) {
                 Line line = new Line(statisticsX, statisticsY, statisticsX, statisticsY + statistics[i] / sum * 140);
                 line.setStroke(Color.web(Parameter.getStatusColor(i)));
@@ -96,8 +97,7 @@ public class Controller {
                 statisticsPane.getChildren().add(line);
             }
             days++;
-            if (days == 390) {
-                days = 0;
+            if (days % 365 == 0) {
                 statisticsPane.getChildren().clear();
             }
             daysLabel.setText(days + " Days");

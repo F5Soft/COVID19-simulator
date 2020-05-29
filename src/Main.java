@@ -22,13 +22,6 @@ public class Main extends Application {
                     People people = new People();
                     community.addPeople(people);
                 }
-                community.setOnMouseClicked(e -> {
-                    if (e.getButton() == MouseButton.PRIMARY) {
-                        community.peopleCluster();
-                    } else if (e.getButton() == MouseButton.SECONDARY) {
-                        community.toggleLockDown();
-                    }
-                });
                 city.addCommunity(community);
             }
         }

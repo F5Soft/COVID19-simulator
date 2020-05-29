@@ -2,6 +2,7 @@ package entity;
 
 import common.Parameter;
 import javafx.scene.Node;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
@@ -40,10 +41,8 @@ public class Community extends Pane {
     }
 
     public void peopleCluster() {
-        if (Math.random() < Parameter.getClusterRate()) {
-            for (People people : getPeople()) {
-                people.cluster();
-            }
+        for (People people : getPeople()) {
+            people.cluster();
         }
     }
 

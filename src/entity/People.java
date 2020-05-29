@@ -15,6 +15,7 @@ public class People extends Circle {
     private int status;
     private double transmissionProb;
     private double immunity;
+    private boolean onTravel;
     private boolean dead;
 
     private final Timeline randomMovement;
@@ -61,7 +62,9 @@ public class People extends Circle {
         }));
         transmission.setCycleCount(-1);
 
-        incubationPeriod = new Timeline(new KeyFrame(Duration.millis(3500 + Math.random() * 3500), e -> setStatus(2)));
+        incubationPeriod = new Timeline(new KeyFrame(Duration.millis(3500 + Math.random() * 3500), e -> {
+            setStatus(2);
+        }));
         incubationPeriod.setCycleCount(1);
 
         symptomPeriod = new Timeline(new KeyFrame(Duration.millis(14000 + Math.random() * 14000), e -> {
@@ -81,6 +84,7 @@ public class People extends Circle {
     }
 
     public void setStatus(int status) {
+
         this.status = status;
         transmissionProb = Parameter.getBasicTransmissionProb(status);
         immunity = Parameter.getBasicImmunity(status);
@@ -106,6 +110,13 @@ public class People extends Circle {
     public void play() {
         randomMovement.play();
         setStatus(status);
+    }
+
+    public void pause() {
+        randomMovement.pause();
+        transmission.pause();
+        incubationPeriod.pause();
+        symptomPeriod.pause();
     }
 
     public void stop() {
@@ -142,6 +153,14 @@ public class People extends Circle {
 
     public Community getCommunity() {
         return (Community) getParent();
+    }
+
+    public void setOnTravel(boolean onTravel) {
+        this.onTravel = onTravel;
+    }
+
+    public boolean isOnTravel() {
+        return onTravel;
     }
 
     public boolean isDead() {
