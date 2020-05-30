@@ -55,6 +55,10 @@ public class People extends Circle {
      */
     private boolean onTravel;
     /**
+     * 是否正在参与群聚
+     */
+    private boolean clustering;
+    /**
      * 随机游走时，上一次的方向角的变化量，用于平滑轨迹
      */
     private double dTheta;
@@ -172,6 +176,7 @@ public class People extends Circle {
      * 模拟该人跑去和别人群聚的动画
      */
     public void cluster() {
+        clustering = true;
         PathTransition pathTransition = new PathTransition();
         pathTransition.setNode(this);
         pathTransition.setAutoReverse(true);
@@ -182,8 +187,12 @@ public class People extends Circle {
         pathTransition.play();
         pathTransition.setOnFinished(e -> {
             for (People people : getCommunity().getPeople()) {
-                humanToHumanTransmission(people);
+                if (people.clustering) {
+                    humanToHumanTransmission(people);
+                }
             }
+            getCommunity().setClustering(false);
+            clustering = false;
         });
     }
 

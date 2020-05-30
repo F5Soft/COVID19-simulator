@@ -16,6 +16,10 @@ public class Community extends Pane {
      * 社区是否被封锁
      */
     private boolean lockDown;
+    /**
+     * 社区是否正在群聚
+     */
+    private boolean clustering;
 
     /**
      * 社区实体构造函数
@@ -70,9 +74,11 @@ public class Community extends Pane {
     /**
      * 模拟社区人员群聚
      */
-    public void peopleCluster() {
+    public void peopleCluster(double clusterRate) {
         for (People people : getPeople()) {
-            people.cluster();
+            if (Math.random() < clusterRate) {
+                people.cluster();
+            }
         }
     }
 
@@ -128,5 +134,23 @@ public class Community extends Pane {
      */
     public boolean isLockDown() {
         return lockDown;
+    }
+
+    /**
+     * 查询当前社区的群聚状态
+     *
+     * @return 群聚状态
+     */
+    public boolean isClustering() {
+        return clustering;
+    }
+
+    /**
+     * 设置当前社区的群聚状态
+     *
+     * @param clustering 群聚状态
+     */
+    public void setClustering(boolean clustering) {
+        this.clustering = clustering;
     }
 }

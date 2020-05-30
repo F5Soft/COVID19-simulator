@@ -82,10 +82,16 @@ public class City extends Pane {
             double y = e.getSceneY() - getLayoutY();
             int col = (int) ((x - 10) / 110);
             int row = (int) ((y - 10) / 110);
-            if (e.getButton() == MouseButton.PRIMARY) {
-                getCommunities().get(5 * row + col).peopleCluster();
+            Community community = getCommunities().get(5 * row + col);
+            if (e.getButton() == MouseButton.PRIMARY && !community.isClustering()) {
+                community.setClustering(true);
+                if (e.isAltDown()) {
+                    community.peopleCluster(1);
+                } else {
+                    community.peopleCluster(0.5);
+                }
             } else if (e.getButton() == MouseButton.SECONDARY) {
-                getCommunities().get(5 * row + col).toggleLockDown();
+                community.toggleLockDown();
             }
         });
     }
@@ -112,6 +118,7 @@ public class City extends Pane {
 
     /**
      * 向城市添加一个社区
+     *
      * @param community 待添加的社区
      */
     public void addCommunity(Community community) {
@@ -120,6 +127,7 @@ public class City extends Pane {
 
     /**
      * 取得城市中的所有社区
+     *
      * @return 城市中所有社区的ArrayList
      */
     public ArrayList<Community> getCommunities() {
@@ -132,6 +140,7 @@ public class City extends Pane {
 
     /**
      * 取得城市中的所有人
+     *
      * @return 城市中所有人的ArrayList
      */
     public ArrayList<People> getAllPeople() {
