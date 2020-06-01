@@ -1,6 +1,6 @@
-package com.covid19.common;
+package common;
 
-import com.covid19.entity.People;
+import entity.People;
 
 import java.util.ArrayList;
 import java.util.Arrays;

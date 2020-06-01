@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="COVID19-simulator">
+    <output-path>$PROJECT_DIR$/out/artifacts/COVID19_simulator</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="ui.Main" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="" />
+        <option name="vendor" value="" />
+        <option name="version" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="COVID19_simulator.jar">
+        <element id="module-output" name="COVID19-simulator" />
+      </element>
+    </root>
+  </artifact>
+</component>

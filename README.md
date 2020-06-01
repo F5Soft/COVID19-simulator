@@ -29,17 +29,15 @@
 ```
 COVID19-simulator
 └─src
-    └─com
-        └─covid19
-            ├─common
-            |      ├─Parameter.java   # 模型参数类
-            |      └─Statistics.java  # 模型统计数据类
-            ├─entity
-            |      ├─City.java        # 城市实体类
-            |      ├─Community.java   # 社区实体类
-            |      └─People.java      # 人实体类
-            └─ui
-               ├─Controller.java      # JavaFX主窗口控制器
-               ├─Main.java            # 主类
-               └─main.fxml            # JavaFX主窗口界面布局
+    ├─common
+    |      ├─Parameter.java   # 模型参数类
+    |      └─Statistics.java  # 模型统计数据类
+    ├─entity
+    |      ├─City.java        # 城市实体类
+    |      ├─Community.java   # 社区实体类
+    |      └─People.java      # 人实体类
+    └─ui
+       ├─Controller.java      # JavaFX主窗口控制器
+       ├─Main.java            # 主类
+       └─main.fxml            # JavaFX主窗口界面布局
 ```
