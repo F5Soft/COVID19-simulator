@@ -1,24 +1,9 @@
 # COVID19-simulator
 利用JavaFX模拟COVID-19在一个城市中传播的场景。
 
-### 目录结构
-```
-COVID19-simulator
-└─src
-    └─com
-        └─covid19
-            ├─common
-            |      ├─Parameter.java   # 模型参数类
-            |      └─Statistics.java  # 模型统计数据类
-            ├─entity
-            |      ├─City.java        # 城市实体类
-            |      ├─Community.java   # 社区实体类
-            |      └─People.java      # 人实体类
-            └─ui
-               ├─Controller.java      # JavaFX主窗口控制器
-               ├─Main.java            # 主类
-               └─main.fxml            # JavaFX主窗口界面布局
-```
+![用户界面](img/2.png)
+
+![用户界面](img/1.png)
 
 ### 人物模型
 本模型将人物抽象成一个圆点，在各自的社区内进行随机游走，或者进出其他的社区。
@@ -39,3 +24,22 @@ COVID19-simulator
 右下角可以调整该病毒的参数（传播概率、传播半径、死亡概率）。
 
 点击Start开始模拟，Pause暂停模拟，Resume继续，而Reset则会重置当前的模型。
+
+### 目录结构
+```
+COVID19-simulator
+└─src
+    └─com
+        └─covid19
+            ├─common
+            |      ├─Parameter.java   # 模型参数类
+            |      └─Statistics.java  # 模型统计数据类
+            ├─entity
+            |      ├─City.java        # 城市实体类
+            |      ├─Community.java   # 社区实体类
+            |      └─People.java      # 人实体类
+            └─ui
+               ├─Controller.java      # JavaFX主窗口控制器
+               ├─Main.java            # 主类
+               └─main.fxml            # JavaFX主窗口界面布局
+```

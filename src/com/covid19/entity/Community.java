@@ -73,6 +73,8 @@ public class Community extends Pane {
 
     /**
      * 模拟社区人员群聚
+     *
+     * @param clusterRate 群聚概率，左键单击为0.5，Alt加左键单击为1
      */
     public void peopleCluster(double clusterRate) {
         for (People people : getPeople()) {
