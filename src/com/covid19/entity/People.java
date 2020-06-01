@@ -11,6 +11,7 @@ import javafx.util.Duration;
 
 /**
  * 人实体
+ * <p>人物实体，也是窗口中的人物视图（小圆点）</p>
  *
  * @author F5 (bsy)
  */
