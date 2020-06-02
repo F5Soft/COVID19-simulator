@@ -26,11 +26,11 @@
         <TextField fx:id="transProbTextField" GridPane.rowIndex="0" GridPane.columnIndex="1" maxWidth="120"
                    style="-fx-text-fill: #e7e7e7; -fx-background-color: #3c3c3c; -fx-text-alignment: right">0.2
         </TextField>
-        <Label GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-text-fill: #e7e7e7">Trans. radius:</Label>
+        <Label GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-text-fill: #e7e7e7">Trans. radius :</Label>
         <TextField fx:id="transRadiusTextField" GridPane.rowIndex="1" GridPane.columnIndex="1" maxWidth="120"
                    style="-fx-text-fill: #e7e7e7; -fx-background-color: #3c3c3c">8
         </TextField>
-        <Label GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-text-fill: #e7e7e7">Death prob.</Label>
+        <Label GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-text-fill: #e7e7e7">Death prob. :</Label>
         <TextField fx:id="deathProbTextField" GridPane.rowIndex="2" GridPane.columnIndex="1" maxWidth="120"
                    style="-fx-text-fill: #e7e7e7; -fx-background-color: #3c3c3c">0.03
         </TextField>

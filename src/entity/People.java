@@ -141,7 +141,6 @@ public class People extends Circle {
         // 根据状态进入不同时期的动画
         switch (status) {
             case 1:
-                transmission.play();
                 incubationPeriod.play();
                 break;
             case 2:
@@ -150,8 +149,6 @@ public class People extends Circle {
             case 4:
                 stop();
                 break;
-            default:
-                transmission.stop();
         }
     }
 
@@ -160,6 +157,7 @@ public class People extends Circle {
      */
     public void play() {
         randomMovement.play();
+        transmission.play();
         setStatus(status);
     }
 
